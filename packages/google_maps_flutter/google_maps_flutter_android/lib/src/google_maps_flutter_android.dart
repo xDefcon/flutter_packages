@@ -1428,6 +1428,28 @@ PlatformMarkerType _platformMarkerTypeFromMarkerType(MarkerType markerType) {
   };
 }
 
+PlatformMapColorScheme? _platformMapColorSchemeFromMapColorScheme(
+  MapColorScheme? colorScheme,
+) {
+  switch (colorScheme) {
+    case null:
+      return null;
+    case MapColorScheme.light:
+      return PlatformMapColorScheme.light;
+    case MapColorScheme.dark:
+      return PlatformMapColorScheme.dark;
+    case MapColorScheme.followSystem:
+      return PlatformMapColorScheme.followSystem;
+  }
+  // The enum comes from a different package, which could get a new value at
+  // any time, so provide a fallback that ensures this won't break when used
+  // with a version that contains new values. This is deliberately outside
+  // the switch rather than a `default` so that the linter will flag the
+  // switch as needing an update.
+  // ignore: dead_code
+  return null;
+}
+
 PlatformMapConfiguration _platformMapConfigurationFromMapConfiguration(
   MapConfiguration config,
 ) {
@@ -1459,6 +1481,9 @@ PlatformMapConfiguration _platformMapConfigurationFromMapConfiguration(
     ),
     mapId: config.mapId,
     style: config.style,
+    mapColorScheme: _platformMapColorSchemeFromMapColorScheme(
+      config.mapColorScheme,
+    ),
   );
 }
 

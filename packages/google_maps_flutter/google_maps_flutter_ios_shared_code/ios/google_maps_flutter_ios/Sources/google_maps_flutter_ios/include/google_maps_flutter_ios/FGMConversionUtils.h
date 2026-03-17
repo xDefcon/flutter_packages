@@ -53,6 +53,10 @@ extern GMSMutablePath *FGMGetPathFromPoints(NSArray<CLLocation *> *points);
 /// Creates a GMSMapViewType from its Pigeon representation.
 extern GMSMapViewType FGMGetMapViewTypeForPigeonMapType(FGMPlatformMapType type);
 
+/// Creates a UIUserInterfaceStyle from its Pigeon representation.
+extern UIUserInterfaceStyle FGMGetUserInterfaceStyleForPigeonMapColorScheme(
+    FGMPlatformMapColorScheme colorScheme);
+
 /// Creates a GMSCollisionBehavior from its Pigeon representation.
 extern GMSCollisionBehavior FGMGetCollisionBehaviorForPigeonCollisionBehavior(
     FGMPlatformMarkerCollisionBehavior collisionBehavior);

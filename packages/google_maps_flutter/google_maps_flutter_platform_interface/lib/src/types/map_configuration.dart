@@ -42,6 +42,7 @@ class MapConfiguration {
     String? cloudMapId,
     this.style,
     this.markerType,
+    this.mapColorScheme,
   }) : mapId = mapId ?? cloudMapId;
 
   /// This setting controls how the API handles gestures on the map. Web only.
@@ -143,6 +144,14 @@ class MapConfiguration {
   /// used.
   final MarkerType? markerType;
 
+  /// The color scheme for the map.
+  ///
+  /// This allows forcing the map to render in light or dark mode,
+  /// or to follow the system setting.
+  ///
+  /// Android and iOS only. On web, this value is ignored.
+  final MapColorScheme? mapColorScheme;
+
   /// Identifier that's associated with a specific cloud-based map style.
   ///
   /// See https://developers.google.com/maps/documentation/get-map-id
@@ -227,6 +236,9 @@ class MapConfiguration {
       mapId: mapId != other.mapId ? mapId : null,
       style: style != other.style ? style : null,
       markerType: markerType != other.markerType ? markerType : null,
+      mapColorScheme: mapColorScheme != other.mapColorScheme
+          ? mapColorScheme
+          : null,
     );
   }
 
@@ -265,6 +277,7 @@ class MapConfiguration {
       mapId: diff.mapId ?? mapId,
       style: diff.style ?? style,
       markerType: diff.markerType ?? markerType,
+      mapColorScheme: diff.mapColorScheme ?? mapColorScheme,
     );
   }
 
@@ -294,7 +307,8 @@ class MapConfiguration {
       buildingsEnabled == null &&
       mapId == null &&
       style == null &&
-      markerType == null;
+      markerType == null &&
+      mapColorScheme == null;
 
   @override
   bool operator ==(Object other) {
@@ -329,7 +343,8 @@ class MapConfiguration {
         buildingsEnabled == other.buildingsEnabled &&
         mapId == other.mapId &&
         style == other.style &&
-        markerType == other.markerType;
+        markerType == other.markerType &&
+        mapColorScheme == other.mapColorScheme;
   }
 
   @override
@@ -359,6 +374,7 @@ class MapConfiguration {
     mapId,
     style,
     markerType,
+    mapColorScheme,
   ]);
 }
 

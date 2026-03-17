@@ -97,6 +97,18 @@ GMSMapViewType FGMGetMapViewTypeForPigeonMapType(FGMPlatformMapType type) {
   }
 }
 
+UIUserInterfaceStyle FGMGetUserInterfaceStyleForPigeonMapColorScheme(
+    FGMPlatformMapColorScheme colorScheme) {
+  switch (colorScheme) {
+    case FGMPlatformMapColorSchemeLight:
+      return UIUserInterfaceStyleLight;
+    case FGMPlatformMapColorSchemeDark:
+      return UIUserInterfaceStyleDark;
+    case FGMPlatformMapColorSchemeFollowSystem:
+      return UIUserInterfaceStyleUnspecified;
+  }
+}
+
 GMSCollisionBehavior FGMGetCollisionBehaviorForPigeonCollisionBehavior(
     FGMPlatformMarkerCollisionBehavior collisionBehavior) {
   switch (collisionBehavior) {

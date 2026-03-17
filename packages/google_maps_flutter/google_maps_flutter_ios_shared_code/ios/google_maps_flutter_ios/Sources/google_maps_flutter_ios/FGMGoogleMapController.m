@@ -637,6 +637,11 @@
   if (style) {
     [self setMapStyle:style];
   }
+  FGMPlatformMapColorSchemeBox *mapColorScheme = config.mapColorScheme;
+  if (mapColorScheme) {
+    self.mapView.overrideUserInterfaceStyle =
+        FGMGetUserInterfaceStyleForPigeonMapColorScheme(mapColorScheme.value);
+  }
 }
 
 #pragma mark - FGMTileProviderDelegate

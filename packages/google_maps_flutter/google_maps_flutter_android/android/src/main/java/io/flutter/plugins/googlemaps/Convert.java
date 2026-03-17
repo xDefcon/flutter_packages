@@ -418,6 +418,18 @@ class Convert {
     return MAP_TYPE_NORMAL;
   }
 
+  static int toMapColorScheme(@NonNull Messages.PlatformMapColorScheme colorScheme) {
+    switch (colorScheme) {
+      case LIGHT:
+        return GoogleMap.MAP_COLOR_SCHEME_LIGHT;
+      case DARK:
+        return GoogleMap.MAP_COLOR_SCHEME_DARK;
+      case FOLLOW_SYSTEM:
+        return GoogleMap.MAP_COLOR_SCHEME_FOLLOW_SYSTEM;
+    }
+    return GoogleMap.MAP_COLOR_SCHEME_FOLLOW_SYSTEM;
+  }
+
   // For now, suppress the deprecation warning for LEGACY; in theory using it
   // no longer does anything, but since that's a server-side decision that could
   // potentially change. Once enough time has passed that there's no plausible
@@ -634,6 +646,10 @@ class Convert {
     final String style = config.getStyle();
     if (style != null) {
       sink.setMapStyle(style);
+    }
+    final Messages.PlatformMapColorScheme mapColorScheme = config.getMapColorScheme();
+    if (mapColorScheme != null) {
+      sink.setMapColorScheme(toMapColorScheme(mapColorScheme));
     }
   }
 

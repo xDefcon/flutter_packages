@@ -117,6 +117,29 @@ class MinMaxZoomPreference {
   }
 }
 
+/// Color scheme for the map.
+///
+/// This allows forcing the map to render in light or dark mode,
+/// or to follow the system setting.
+///
+/// On Android, this maps to `MapColorScheme` values (`LIGHT`, `DARK`,
+/// `FOLLOW_SYSTEM`).
+///
+/// On iOS, this maps to `overrideUserInterfaceStyle` on `GMSMapView`
+/// (`.light`, `.dark`, `.unspecified`).
+///
+/// On web, this value is ignored.
+enum MapColorScheme {
+  /// Light color scheme.
+  light,
+
+  /// Dark color scheme.
+  dark,
+
+  /// Follow the system color scheme setting.
+  followSystem,
+}
+
 /// Exception when a map style is invalid or was unable to be set.
 ///
 /// See also: `setStyle` on [GoogleMapController] for why this exception

@@ -546,6 +546,11 @@ class GoogleMapController
   }
 
   @Override
+  public void setMapColorScheme(int mapColorScheme) {
+    googleMap.setMapColorScheme(mapColorScheme);
+  }
+
+  @Override
   public void setTrackCameraPosition(boolean trackCameraPosition) {
     this.trackCameraPosition = trackCameraPosition;
   }

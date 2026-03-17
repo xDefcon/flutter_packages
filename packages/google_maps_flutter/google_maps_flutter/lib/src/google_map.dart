@@ -144,6 +144,7 @@ class GoogleMap extends StatefulWidget {
     this.onTap,
     this.onLongPress,
     this.markerType = GoogleMapMarkerType.marker,
+    this.mapColorScheme,
     String? mapId,
     @Deprecated('cloudMapId is deprecated. Use mapId instead.')
     String? cloudMapId,
@@ -410,6 +411,16 @@ class GoogleMap extends StatefulWidget {
   /// While some features work with either type, using the incorrect type
   /// may result in unexpected behavior.
   final GoogleMapMarkerType markerType;
+
+  /// The color scheme for the map.
+  ///
+  /// This allows forcing the map to render in light or dark mode,
+  /// or to follow the system setting.
+  ///
+  /// If null, the map will use the platform default behavior.
+  ///
+  /// Android and iOS only. On web, this value is ignored.
+  final MapColorScheme? mapColorScheme;
 
   /// Creates a [State] for this [GoogleMap].
   @override
@@ -767,6 +778,7 @@ MapConfiguration _configurationFromMapWidget(GoogleMap map) {
     trafficEnabled: map.trafficEnabled,
     buildingsEnabled: map.buildingsEnabled,
     markerType: mapConfigurationMarkerType,
+    mapColorScheme: map.mapColorScheme,
     // A null mapId in the widget means no map ID, which is expressed as '' in
     // the configuration to distinguish from no change (null).
     mapId: map.mapId ?? '',
